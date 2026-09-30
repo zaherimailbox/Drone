@@ -1,2 +1,2 @@
-cd ~/Desktop/public_backup
+kill $(lsof -t -iTCP:80 -sTCP:LISTEN)
 go run .
