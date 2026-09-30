@@ -1,0 +1,2 @@
+cd ~/Desktop/public_backup
+go run .

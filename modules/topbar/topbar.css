@@ -1,0 +1,89 @@
+/* TopBar Master Cockpit Strip */
+.topbar-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-metal);
+  border-radius: var(--panel-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.topbar-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+}
+
+.topbar-brand .callsign {
+  background: var(--accent-cyan-dim);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+.indicator-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.indicator-pill .pill-label {
+  color: var(--text-muted);
+}
+
+.indicator-pill .pill-value {
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.indicator-pill .pill-value.armed {
+  color: var(--accent-red);
+  text-shadow: 0 0 8px var(--accent-red);
+}
+
+.indicator-pill .pill-value.mode {
+  color: var(--accent-amber);
+}
+
+.btn-master-kill {
+  background: #421010;
+  border: 1px solid var(--accent-red);
+  color: #ff8a80;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 61, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-master-kill:hover {
+  background: var(--accent-red);
+  color: #fff;
+  box-shadow: 0 0 16px var(--accent-red);
+}

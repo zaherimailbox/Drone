@@ -1,0 +1,43 @@
+{{define "radar-puzzle"}}
+<!-- Module: Radar Scan & Mosaic Puzzle Grid -->
+        <article class="cockpit-module" style="flex: 1;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>GRID SURVEY & MOSAIC PUZZLE</span>
+            <span>4x4 SECTOR</span>
+          </div>
+          <div class="cockpit-module-body">
+            <div class="radar-puzzle-container">
+              
+              <!-- Polar Sonar / Radar Sweep -->
+              <div class="radar-screen-wrapper">
+                <div class="radar-rings"></div>
+                <div class="radar-sweep-line"></div>
+                <div class="target-blip" style="top: 35%; left: 60%;"></div>
+              </div>
+
+              <!-- Mosaic Puzzle Captured Tiles -->
+              <div class="puzzle-grid-wrapper">
+                <div class="puzzle-tiles-matrix">
+                  <div class="puzzle-tile captured">01</div>
+                  <div class="puzzle-tile captured">02</div>
+                  <div class="puzzle-tile captured">03</div>
+                  <div class="puzzle-tile">04</div>
+                  <div class="puzzle-tile captured">05</div>
+                  <div class="puzzle-tile captured hotspot">06!</div>
+                  <div class="puzzle-tile">07</div>
+                  <div class="puzzle-tile">08</div>
+                  <div class="puzzle-tile">09</div>
+                  <div class="puzzle-tile">10</div>
+                  <div class="puzzle-tile">11</div>
+                  <div class="puzzle-tile">12</div>
+                  <div class="puzzle-tile">13</div>
+                  <div class="puzzle-tile">14</div>
+                  <div class="puzzle-tile">15</div>
+                  <div class="puzzle-tile">16</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+{{end}}

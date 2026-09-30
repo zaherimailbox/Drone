@@ -1,0 +1,224 @@
+{{define "detector-control"}}
+<!-- Module: Detector Control Panel & Vintage Tuner -->
+        <article class="cockpit-module detector-module" style="flex: 2.3;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>METAL DETECTOR CONTROL</span>
+            <span class="detector-frequency-range">5 - 15 kHz</span>
+          </div>
+          <div class="cockpit-module-body">
+            <div class="detector-wrapper">
+
+              
+              <!-- Industrial Oscilloscope -->
+              <div class="oscilloscope-chassis">
+                <div class="oscilloscope-channel oscilloscope-channel-tx">
+                  <canvas id="oscilloscope-tx-canvas" width="300" height="150"></canvas>
+                  <div class="os-overlay">
+                    <span class="os-label tx-label">CH1: TX (DRIVE)</span>
+                    <span class="os-label os-timebase-label">TB LOCK: 10.0 kHz</span>
+                    <span class="os-grid"></span>
+                  </div>
+                </div>
+                <div class="oscilloscope-channel oscilloscope-channel-rx">
+                  <canvas id="oscilloscope-rx-canvas" width="300" height="150"></canvas>
+                  <div class="os-overlay">
+                    <span class="os-label rx-label">CH2: RX (ECHO)</span>
+                    <span class="os-grid"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="detector-apparatus">
+              <!-- Retro Linear Frequency Dial -->
+              <div class="radio-tuner-chassis">
+                <div class="tuner-glass-window" role="slider" tabindex="0" aria-label="Detector frequency" aria-valuemin="5" aria-valuemax="15" aria-valuenow="10" aria-valuetext="10.0 kHz" aria-disabled="true">
+                  
+                  <div class="tuner-scale-fine-ticks"></div>
+
+                  <div class="tuner-scale-ticks">
+                    <span>5k</span>
+                    <span>7.5k</span>
+                    <span>10k</span>
+                    <span>12.5k</span>
+                    <span>15k</span>
+                  </div>
+                  <div class="tuner-needle"></div>
+                </div>
+              </div>
+
+              <!-- Dual Analog Galvanometer Meters -->
+              <div class="analog-gauges-row">
+                <!-- TX POWER VU METER -->
+                <div class="vu-meter-chassis">
+                  <!-- Status LED in Spandrel/Corner outside the arc -->
+                  <div class="meter-status-led tx-led" title="TX Power Normal"></div>
+
+                  <div class="vu-meter-arc-face">
+                    <!-- Retro Radio Graduated Scale Arc -->
+                    <svg class="vu-scale-svg" viewBox="0 0 140 62">
+                      <defs>
+                        <!-- Vintage Warm Dial Backlight Gradient -->
+                        <radialGradient id="dialGlowTX" cx="50%" cy="100%" r="90%">
+                          <stop offset="0%" stop-color="#182736" />
+                          <stop offset="65%" stop-color="#0f1924" />
+                          <stop offset="100%" stop-color="#090f16" />
+                        </radialGradient>
+                      </defs>
+
+                      <rect width="140" height="62" fill="url(#dialGlowTX)" />
+
+                      <!-- Background Dial Arc Track -->
+                      <path d="M 25 59 A 45 45 0 0 1 115 59" fill="none" stroke="#223344" stroke-width="3" stroke-linecap="round" />
+
+                      <!-- Green Operational Range (0 - 70%) -->
+                      <path d="M 25 59 A 45 45 0 0 1 96.5 22.6" fill="none" stroke="#00e676" stroke-width="2.5" opacity="0.8" />
+                      <!-- Amber Warning (70 - 85%) -->
+                      <path d="M 96.5 22.6 A 45 45 0 0 1 110.1 38.6" fill="none" stroke="#ffb300" stroke-width="2.5" opacity="0.9" />
+                      <!-- Red Overload (85 - 100%) -->
+                      <path d="M 110.1 38.6 A 45 45 0 0 1 115 59" fill="none" stroke="#ff3d00" stroke-width="2.5" opacity="0.9" />
+
+                      <!-- Major & Minor Guide Marks -->
+                      <line x1="25" y1="59" x2="32" y2="59" stroke="#eceff1" stroke-width="1.8"/>
+                      <line x1="38.2" y1="27.2" x2="42.5" y2="31.5" stroke="#eceff1" stroke-width="1.8"/>
+                      <line x1="70" y1="14" x2="70" y2="21" stroke="#00e5ff" stroke-width="2.2"/>
+                      <line x1="101.8" y1="27.2" x2="97.5" y2="31.5" stroke="#ffb300" stroke-width="1.8"/>
+                      <line x1="115" y1="59" x2="108" y2="59" stroke="#ff3d00" stroke-width="1.8"/>
+
+                      <line x1="28.4" y1="41.8" x2="32.1" y2="43.3" stroke="#78909c" stroke-width="1"/>
+                      <line x1="52.8" y1="17.5" x2="54.3" y2="21.2" stroke="#78909c" stroke-width="1"/>
+                      <line x1="87.2" y1="17.5" x2="85.7" y2="21.2" stroke="#78909c" stroke-width="1"/>
+                      <line x1="111.6" y1="41.8" x2="107.9" y2="43.3" stroke="#ff7543" stroke-width="1"/>
+
+                      <!-- Values above the arc -->
+                      <text x="12" y="57" text-anchor="middle" fill="#90a4ae" font-size="7" font-weight="bold" font-family="'Consolas', monospace">0</text>
+                      <text x="29" y="20" text-anchor="middle" fill="#90a4ae" font-size="7" font-weight="bold" font-family="'Consolas', monospace">25</text>
+                      <text x="70" y="8" text-anchor="middle" fill="#00e5ff" font-size="8" font-weight="bold" font-family="'Consolas', monospace">50</text>
+                      <text x="111" y="20" text-anchor="middle" fill="#ffb300" font-size="7" font-weight="bold" font-family="'Consolas', monospace">75</text>
+                      <text x="128" y="57" text-anchor="middle" fill="#ff3d00" font-size="7" font-weight="bold" font-family="'Consolas', monospace">100</text>
+                    </svg>
+
+                    <!-- Needle -->
+                    <div class="meter-needle" style="transform: rotate(-10deg);"></div>
+                    <div class="needle-pivot-cap"></div>
+                  </div>
+                  <span class="vu-meter-title">TX FREQ INDEX (%)</span>
+                </div>
+
+                <!-- RX SIGNAL VU METER -->
+                <div class="vu-meter-chassis">
+                  <!-- Status LED in Spandrel/Corner outside the arc -->
+                  <div class="meter-status-led rx-led alert-pulse" title="RX Target Anomaly"></div>
+
+                  <div class="vu-meter-arc-face">
+                    <!-- Retro Radio Graduated Scale Arc -->
+                    <svg class="vu-scale-svg" viewBox="0 0 140 62">
+                      <defs>
+                        <!-- Vintage Warm Dial Backlight Gradient -->
+                        <radialGradient id="dialGlowRX" cx="50%" cy="100%" r="90%">
+                          <stop offset="0%" stop-color="#182736" />
+                          <stop offset="65%" stop-color="#0f1924" />
+                          <stop offset="100%" stop-color="#090f16" />
+                        </radialGradient>
+                      </defs>
+
+                      <rect width="140" height="62" fill="url(#dialGlowRX)" />
+
+                      <!-- Background Dial Arc Track -->
+                      <path d="M 25 59 A 45 45 0 0 1 115 59" fill="none" stroke="#223344" stroke-width="3" stroke-linecap="round" />
+
+                      <!-- Normal Base Ground (Green: -20 to 0dB) -->
+                      <path d="M 25 59 A 45 45 0 0 1 103.7 29.1" fill="none" stroke="#00e676" stroke-width="2.5" opacity="0.8" />
+                      <!-- Suspect Response (Amber: 0 to +3dB) -->
+                      <path d="M 103.7 29.1 A 45 45 0 0 1 112.1 43" fill="none" stroke="#ffb300" stroke-width="2.5" opacity="0.9" />
+                      <!-- Metal Strike Target (Red: +3 to +6dB) -->
+                      <path d="M 112.1 43 A 45 45 0 0 1 115 59" fill="none" stroke="#ff3d00" stroke-width="2.5" opacity="0.9" />
+
+                      <!-- Major & Minor Guide Marks -->
+                      <line x1="25" y1="59" x2="32" y2="59" stroke="#eceff1" stroke-width="1.8"/>
+                      <line x1="54.1" y1="16.9" x2="56.2" y2="22.5" stroke="#eceff1" stroke-width="1.8"/>
+                      <line x1="103.7" y1="29.1" x2="98.7" y2="33.6" stroke="#00e5ff" stroke-width="2.2"/>
+                      <line x1="112.1" y1="43" x2="105.5" y2="45.5" stroke="#ffb300" stroke-width="1.8"/>
+                      <line x1="115" y1="59" x2="108" y2="59" stroke="#ff3d00" stroke-width="1.8"/>
+
+                      <line x1="33" y1="33.5" x2="36.5" y2="35.8" stroke="#78909c" stroke-width="1"/>
+                      <line x1="80.8" y1="15.3" x2="79.5" y2="19.2" stroke="#78909c" stroke-width="1"/>
+                      <line x1="108.5" y1="35.7" x2="104.8" y2="37.8" stroke="#ffb300" stroke-width="1"/>
+                      <line x1="114.3" y1="50.9" x2="110.3" y2="51.6" stroke="#ff7543" stroke-width="1"/>
+
+                      <!-- Values above the arc -->
+                      <text x="12" y="57" text-anchor="middle" fill="#90a4ae" font-size="6.5" font-weight="bold" font-family="'Consolas', monospace">-20</text>
+                      <text x="49" y="8" text-anchor="middle" fill="#90a4ae" font-size="6.5" font-weight="bold" font-family="'Consolas', monospace">-10</text>
+                      <text x="113" y="20" text-anchor="middle" fill="#00e5ff" font-size="8" font-weight="bold" font-family="'Consolas', monospace">0</text>
+                      <text x="124" y="36" text-anchor="middle" fill="#ffb300" font-size="7" font-weight="bold" font-family="'Consolas', monospace">+3</text>
+                      <text x="128" y="57" text-anchor="middle" fill="#ff3d00" font-size="7" font-weight="bold" font-family="'Consolas', monospace">+6</text>
+                    </svg>
+
+                    <!-- Needle -->
+                    <div class="meter-needle" style="transform: rotate(22deg);"></div>
+                    <div class="needle-pivot-cap"></div>
+                  </div>
+                  <span class="vu-meter-title">RX SIGNAL (dB)</span>
+                </div>
+              </div>
+
+              <!-- Rotary Potentiometers Knobs -->
+              <div class="knobs-cluster">
+                <div class="knob-unit">
+                  <div class="knob-scale-ring"></div>
+                    <div class="knob-scale-ring"></div>
+                    <div class="knob-scale-ring"></div>
+                    <div class="knob-scale-ring"></div>
+                    <div class="rotary-knob" role="slider" tabindex="0" aria-label="Frequency" aria-valuemin="5" aria-valuemax="15" aria-valuestep="0.1" aria-valuenow="10" aria-valuetext="10.0 kHz">
+                    <div class="rotary-knob-indicator"></div>
+                  </div>
+                  <span class="knob-label">FREQ (kHz)</span>
+                </div>
+                <div class="knob-unit">
+                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Frequency step" aria-valuemin="0.1" aria-valuemax="2" aria-valuestep="0.1" aria-valuenow="0.5" aria-valuetext="0.5 kHz">
+                    <div class="rotary-knob-indicator"></div>
+                  </div>
+                  <span class="knob-label">STEP: 0.5 kHz</span>
+                </div>
+                <div class="knob-unit">
+                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Carrier duty" aria-valuemin="10" aria-valuemax="90" aria-valuestep="1" aria-valuenow="50" aria-valuetext="50 percent">
+                    <div class="rotary-knob-indicator"></div>
+                  </div>
+                  <span class="knob-label">CARRIER DUTY</span>
+                </div>
+                <div class="knob-unit">
+                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Burst duty" aria-valuemin="40" aria-valuemax="80" aria-valuestep="1" aria-valuenow="60" aria-valuetext="60 percent">
+                    <div class="rotary-knob-indicator"></div>
+                  </div>
+                  <span class="knob-label">BURST DUTY</span>
+                </div>
+              
+                <div class="knob-unit audio-selector-unit">
+                  <div class="knob-scale-ring selector-ticks"></div>
+                  <div class="rotary-knob selector-knob" role="slider" tabindex="0" aria-label="Audio Mode" aria-valuemin="0" aria-valuemax="3" aria-valuestep="1" aria-valuenow="3" aria-valuetext="T/R">
+                    <div class="rotary-knob-indicator"></div>
+                  </div>
+                  <span class="knob-label">AUDIO OUT</span>
+                  <div class="selector-labels">
+                    <span>MUTE</span>
+                    <span>TX</span>
+                    <span>RX</span>
+                    <span>T/R</span>
+                  </div>
+                </div>
+</div>
+              </div>
+
+              <!-- Mode Toggle & Pulse Fire Button -->
+              <div class="detector-actions-strip">
+                <div class="toggle-switch-group" role="group" aria-label="Detector power and mode">
+                  <button class="toggle-pill" type="button" data-mode="OFF" aria-pressed="false">OFF</button>
+                  <button class="toggle-pill" type="button" data-mode="MAN" aria-pressed="false">MAN</button>
+                  <button class="toggle-pill active" type="button" data-mode="AUTO" aria-pressed="true">AUTO</button>
+                </div>
+                <button class="btn-pulse-fire">PULSE FIRE</button>
+              </div>
+
+            </div>
+          </div>
+        </article>
+{{end}}

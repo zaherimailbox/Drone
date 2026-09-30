@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Cockpit GCS - Tactical Ground Station</title>
+  
+  <!-- Core & Modular Bundled Styles (Zero Latency RAM Cached) -->
+  <link rel="stylesheet" href="/assets/bundle.css?v=audio-route-1">
+  
+  <!-- Preload main module to accelerate Time to Interactive (TTI) -->
+  <link rel="modulepreload" href="/main.js?v=audio-route-1">
+</head>
+<body>
+
+  <div class="cockpit-container">
+    
+    {{ template "topbar" . }}
+
+        <!-- 2. Cockpit 3-Column Deck -->
+    <main class="cockpit-main-deck">
+      
+      <!-- LEFT COLUMN: Flight Instruments & Maneuver Controls -->
+      <section class="deck-col-left">
+        
+        {{ template "vitals-hud" . }}
+
+        {{ template "flight-control" . }}
+
+      </section>
+
+      <!-- CENTER COLUMN: Dual-Camera Feed & Radar Mosaic Puzzle -->
+      <section class="deck-col-center">
+        
+        {{ template "camera-board" . }}
+
+        {{ template "radar-puzzle" . }}
+
+      </section>
+
+      <!-- RIGHT COLUMN: Metal Detector, Sonar Audio & Black Box Terminal -->
+      <section class="deck-col-right">
+        
+        {{ template "detector-control" . }}
+        
+        {{ template "logger-terminal" . }}
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Cockpit Core & Modular Scripts (ES Modules) -->
+  <script type="module" src="main.js?v=audio-route-1"></script>
+
+</body>
+</html>

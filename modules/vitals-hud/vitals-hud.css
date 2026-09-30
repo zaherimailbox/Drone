@@ -1,0 +1,159 @@
+/* Vitals HUD & Flight Instruments */
+.vitals-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Artificial Horizon Mini HUD */
+.horizon-container {
+  height: 95px;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horizon-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #102438, #1a4263);
+}
+
+.horizon-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #3d2714, #211307);
+}
+
+.horizon-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  box-shadow: 0 0 4px #ffffff;
+}
+
+.horizon-reticle {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  border-bottom: 2px solid var(--accent-amber);
+  border-left: 2px solid var(--accent-amber);
+  border-right: 2px solid var(--accent-amber);
+  z-index: 2;
+}
+
+.horizon-readouts {
+  position: absolute;
+  bottom: 4px;
+  width: calc(100% - 12px);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-cyan);
+  z-index: 3;
+}
+
+/* Telemetry Gauges Grid */
+.telemetry-bars-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vital-metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vital-metric-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.vital-metric-name {
+  color: var(--text-muted);
+}
+
+.vital-metric-value {
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.bar-track {
+  height: 6px;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+.bar-fill.cyan {
+  background: linear-gradient(90deg, #0097a7, var(--accent-cyan));
+  box-shadow: 0 0 6px var(--accent-cyan-dim);
+}
+
+.bar-fill.green {
+  background: linear-gradient(90deg, #2e7d32, var(--accent-green));
+  box-shadow: 0 0 6px var(--accent-green-dim);
+}
+
+.bar-fill.amber {
+  background: linear-gradient(90deg, #f57f17, var(--accent-amber));
+  box-shadow: 0 0 6px var(--accent-amber-dim);
+}
+
+/* Digital Vitals Inset Cards */
+.vitals-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.vital-card {
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  padding: 5px 8px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vital-card .card-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.vital-card .card-number {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--accent-cyan);
+}

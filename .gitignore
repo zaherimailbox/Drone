@@ -1,0 +1,18 @@
+# Go build outputs
+/drone-cockpit
+/server
+*.exe
+*.test
+*.out
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp

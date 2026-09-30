@@ -1,0 +1,43 @@
+/* Mission Logger & Tactical Black Box Terminal */
+.logger-terminal-wrapper {
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  border-radius: 3px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.terminal-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.log-entry {
+  display: flex;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.log-entry .log-time {
+  color: var(--text-dim);
+}
+
+.log-entry.info .log-msg {
+  color: var(--text-main);
+}
+
+.log-entry.warn .log-msg {
+  color: var(--accent-amber);
+}
+
+.log-entry.hit .log-msg {
+  color: var(--accent-red);
+  font-weight: bold;
+}

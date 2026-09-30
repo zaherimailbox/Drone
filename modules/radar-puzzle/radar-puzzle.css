@@ -1,0 +1,128 @@
+/* Radar & Puzzle Mosaic Mapping Screen */
+.radar-puzzle-container {
+  display: flex;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Polar Sonar/Radar Scan Screen */
+.radar-screen-wrapper {
+  flex: 1;
+  background: radial-gradient(circle, #081a17 0%, #030a08 100%);
+  border: 1px solid #144033;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-sweep-line {
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  top: 50%;
+  right: 50%;
+  transform-origin: 100% 50%;
+  background: linear-gradient(90deg, transparent, var(--accent-green));
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: radar-spin 4s linear infinite;
+}
+
+@keyframes radar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radar-rings {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-rings::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.25);
+}
+
+.radar-rings::after {
+  content: "";
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.35);
+}
+
+.target-blip {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-red);
+  animation: blip-pulse 1.2s infinite;
+}
+
+@keyframes blip-pulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.6; }
+}
+
+/* Mosaic Puzzle Step-by-Step Grid */
+.puzzle-grid-wrapper {
+  flex: 1;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  gap: 4px;
+}
+
+.puzzle-tiles-matrix {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3px;
+  background: #000;
+  padding: 3px;
+  border-radius: 2px;
+}
+
+.puzzle-tile {
+  background: #111a24;
+  border: 1px solid #1e2d3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-dim);
+  position: relative;
+}
+
+.puzzle-tile.captured {
+  background: #193847;
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.puzzle-tile.hotspot {
+  background: #3e1b1b;
+  border-color: var(--accent-red);
+  color: #ff8a80;
+}

@@ -1,0 +1,31 @@
+{{define "logger-terminal"}}
+<!-- Module: Logger & Tactical Black Box Console -->
+        <article class="cockpit-module" style="flex: 0.7;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>BLACK BOX MISSION LOG</span>
+            <span>SYS-LOG</span>
+          </div>
+          <div class="cockpit-module-body">
+            <div class="logger-terminal-wrapper">
+              <div class="terminal-scroll-area">
+                <div class="log-entry info">
+                  <span class="log-time">[12:44:10]</span>
+                  <span class="log-msg">ARMING SEQUENCE SUCCESSFUL.</span>
+                </div>
+                <div class="log-entry info">
+                  <span class="log-time">[12:44:25]</span>
+                  <span class="log-msg">WAYPOINT 01 REACHED. CAPTURING IMAGE.</span>
+                </div>
+                <div class="log-entry warn">
+                  <span class="log-time">[12:44:50]</span>
+                  <span class="log-msg">STEP SCAN ANOMALY DETECTED AT GRID #06.</span>
+                </div>
+                <div class="log-entry hit">
+                  <span class="log-time">[12:45:02]</span>
+                  <span class="log-msg">TARGET FLAG: 9.4 kHz PEAK RESPONSE (+18dB).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+{{end}}

@@ -1,0 +1,30 @@
+{{define "flight-control"}}
+<!-- Module: Flight Control Keyboard & Actions -->
+        <article class="cockpit-module" style="flex: 1;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>FLIGHT CONTROLS</span>
+            <span>6-DOF</span>
+          </div>
+          <div class="cockpit-module-body">
+            <div class="flight-ctl-wrapper">
+              <div class="flight-pad-container">
+                <div class="pad-stick">
+                  <div class="pad-knob"></div>
+                  <span class="pad-label">THR / YAW</span>
+                </div>
+                <div class="pad-stick">
+                  <div class="pad-knob"></div>
+                  <span class="pad-label">PITCH / ROLL</span>
+                </div>
+              </div>
+
+              <div class="flight-quick-actions">
+                <button class="btn-flight active">LOITER HOLD</button>
+                <button class="btn-flight">ALT HOLD</button>
+                <button class="btn-flight">AUTO LAND</button>
+                <button class="btn-flight warning">RTL HOME</button>
+              </div>
+            </div>
+          </div>
+        </article>
+{{end}}

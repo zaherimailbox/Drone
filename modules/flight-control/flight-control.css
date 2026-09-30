@@ -1,0 +1,113 @@
+/* Flight Control & Maneuver Module */
+.flight-ctl-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Tactical D-Pad / Virtual Joystick Area */
+.flight-pad-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.pad-stick {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-highlight);
+  background: radial-gradient(circle, #1a222c 0%, #0d1217 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pad-stick::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: rgba(255,255,255,0.05);
+}
+
+.pad-stick::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+}
+
+.pad-knob {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #37474f, #21272e);
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  cursor: grab;
+  z-index: 2;
+}
+
+.pad-label {
+  position: absolute;
+  bottom: -16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Quick Action Flight Mode Buttons */
+.flight-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.btn-flight {
+  background: var(--bg-panel-secondary);
+  border: 1px solid var(--border-metal);
+  color: var(--text-main);
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.btn-flight:hover {
+  background: var(--border-highlight);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.btn-flight.active {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+  background: var(--accent-amber-dim);
+}
+
+.btn-flight.warning {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.btn-flight.warning:hover {
+  background: var(--accent-red);
+  color: #fff;
+}

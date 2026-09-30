@@ -1,0 +1,37 @@
+{{define "topbar"}}
+<!-- 1. TopBar Master Strip -->
+    <header class="cockpit-top">
+      <div class="topbar-strip">
+        <div class="topbar-section">
+          <div class="topbar-brand">
+            <span>UAV-PROWLER</span>
+            <span class="callsign">SYS-ONLINE</span>
+          </div>
+          <div class="indicator-pill">
+            <span class="pill-label">LINK:</span>
+            <span class="pill-value">98% / 14ms</span>
+          </div>
+          <div class="indicator-pill">
+            <span class="pill-label">STATE:</span>
+            <span class="pill-value armed">ARMED</span>
+          </div>
+          <div class="indicator-pill">
+            <span class="pill-label">MODE:</span>
+            <span class="pill-value mode">AUTO_SURVEY</span>
+          </div>
+        </div>
+
+        <div class="topbar-section">
+          <div class="indicator-pill">
+            <span class="pill-label">MET:</span>
+            <span class="pill-value">00:18:42</span>
+          </div>
+          <div class="indicator-pill">
+            <span class="pill-label">UTC:</span>
+            <span class="pill-value">12:45:08</span>
+          </div>
+          <button class="btn-master-kill">KILL SWITCH</button>
+        </div>
+      </div>
+    </header>
+{{end}}

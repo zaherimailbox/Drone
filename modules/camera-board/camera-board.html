@@ -1,0 +1,33 @@
+{{define "camera-board"}}
+<!-- Module: Dual-Camera Feed Board -->
+        <article class="cockpit-module" style="flex: 1.4;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>OPTICAL RECON / CAM-01 (FPV)</span>
+            <span>1080P 60FPS</span>
+          </div>
+          <div class="cockpit-module-body" style="padding: 0;">
+            <div class="camera-board-container">
+              <div class="camera-viewport-frame">
+                <div class="camera-feed-placeholder">
+                  <div class="camera-hud-overlay">
+                    <div class="hud-top-telemetry">
+                      <span>CAM: FORWARD PRIMARY</span>
+                      <span>FOV: 94°</span>
+                      <span>EXP: AUTO</span>
+                    </div>
+                    <div class="hud-crosshair"></div>
+                  </div>
+                </div>
+
+                <!-- Secondary Camera (PiP: Downward Nadir Feed) -->
+                <div class="camera-pip-window">
+                  <span class="pip-header">CAM-02: NADIR</span>
+                  <div class="pip-grid-lines">
+                    <div class="pip-target-box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+{{end}}

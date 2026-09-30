@@ -1,0 +1,70 @@
+{{define "vitals-hud"}}
+<!-- Module: Vitals HUD & Instruments -->
+        <article class="cockpit-module" style="flex: 1.2;">
+          <div class="cockpit-module-header">
+            <span class="module-badge"><span class="status-dot"></span>VITALS & INSTRUMENTS</span>
+            <span>PFD-01</span>
+          </div>
+          <div class="cockpit-module-body">
+            <div class="vitals-grid">
+              <!-- Mini Artificial Horizon -->
+              <div class="horizon-container">
+                <div class="horizon-sky"></div>
+                <div class="horizon-ground"></div>
+                <div class="horizon-line"></div>
+                <div class="horizon-reticle"></div>
+                <div class="horizon-readouts">
+                  <span>P: +2.4°</span>
+                  <span>R: -0.8°</span>
+                  <span>HDG: 042°</span>
+                </div>
+              </div>
+
+              <!-- Telemetry Bars -->
+              <div class="telemetry-bars-group">
+                <div class="vital-metric-row">
+                  <div class="vital-metric-header">
+                    <span class="vital-metric-name">BATTERY (4S LiPo)</span>
+                    <span class="vital-metric-value">15.8V / 82%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill green" style="width: 82%;"></div>
+                  </div>
+                </div>
+
+                <div class="vital-metric-row">
+                  <div class="vital-metric-header">
+                    <span class="vital-metric-name">ESC & BOARD TEMP</span>
+                    <span class="vital-metric-value">44°C</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill cyan" style="width: 44%;"></div>
+                  </div>
+                </div>
+
+                <div class="vital-metric-row">
+                  <div class="vital-metric-header">
+                    <span class="vital-metric-name">RADIO SIGNAL (RSSI)</span>
+                    <span class="vital-metric-value">-58 dBm</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill cyan" style="width: 90%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Digital Readout Cards -->
+              <div class="vitals-cards-row">
+                <div class="vital-card">
+                  <span class="card-title">ALT (AGL)</span>
+                  <span class="card-number">3.20 m</span>
+                </div>
+                <div class="vital-card">
+                  <span class="card-title">G-SPEED</span>
+                  <span class="card-number">0.4 m/s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+{{end}}

@@ -1,0 +1,129 @@
+/* Dual-Camera Surveillance Board */
+.camera-board-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+}
+
+.camera-viewport-frame {
+  flex: 1;
+  background: #000;
+  border: 1px solid var(--border-metal);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Simulated Camera Feed Backdrop */
+.camera-feed-placeholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #0e1e2b 0%, #050b10 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Crosshair & Pitch Ladder HUD Overlay on Video */
+.camera-hud-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.hud-top-telemetry {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 4px #000;
+}
+
+.hud-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  border-radius: 50%;
+}
+
+.hud-crosshair::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: var(--accent-cyan);
+}
+
+.hud-crosshair::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: var(--accent-cyan);
+}
+
+/* Secondary Camera (Picture-in-Picture / Downward Nadir Feed) */
+.camera-pip-window {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 140px;
+  height: 95px;
+  background: #06090d;
+  border: 2px solid var(--accent-amber);
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.pip-header {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--accent-amber);
+  background: rgba(0,0,0,0.7);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.pip-grid-lines {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 179, 0, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 179, 0, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pip-target-box {
+  width: 24px;
+  height: 24px;
+  border: 1px dashed var(--accent-amber);
+}

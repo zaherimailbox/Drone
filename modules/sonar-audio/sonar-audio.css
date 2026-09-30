@@ -1,0 +1,126 @@
+/* Sonar Acoustic & Mission Config Strip */
+.sonar-config-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  padding: 6px 10px;
+  border-radius: 3px;
+  gap: 6px;
+}
+
+.sonar-status-group {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+  gap: 5px;
+}
+
+.sonar-soundwave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+}
+
+.wave-bar {
+  width: 3px;
+  height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+}
+
+.wave-bar:nth-child(2) { height: 12px; }
+.wave-bar:nth-child(3) { height: 16px; }
+.wave-bar:nth-child(4) { height: 8px; }
+
+.sonar-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: bold;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+}
+
+.sonar-mode-switch {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 1px;
+  padding: 2px;
+  background: var(--bg-panel-secondary);
+  border: 1px solid var(--border-metal);
+  border-radius: 2px;
+}
+
+.sonar-mode-option {
+  padding: 4px 5px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sonar-mode-option.active {
+  background: rgba(0, 229, 255, 0.16);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.sonar-mode-option[data-audio-mode="MUTE"].active {
+  background: rgba(239, 83, 80, 0.12);
+  border-color: #ef5350;
+  color: #ff8a80;
+}
+
+.sonar-mode-option:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.sonar-soundwave.is-pinging .wave-bar {
+  animation: sonar-wave-pulse 0.26s ease-in-out infinite alternate;
+}
+
+.sonar-soundwave.is-pinging .wave-bar:nth-child(2) { animation-delay: 0.04s; }
+.sonar-soundwave.is-pinging .wave-bar:nth-child(3) { animation-delay: 0.08s; }
+.sonar-soundwave.is-pinging .wave-bar:nth-child(4) { animation-delay: 0.12s; }
+
+@keyframes sonar-wave-pulse {
+  to { transform: scaleY(0.35); }
+}
+
+/* Mission Survey Quick Controller */
+.mission-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btn-survey-action {
+  flex: 1;
+  background: var(--bg-panel-secondary);
+  border: 1px solid var(--border-metal);
+  color: var(--text-main);
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-survey-action.start {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}

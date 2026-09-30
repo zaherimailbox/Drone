@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>audio probe</title></head><body>
+<iframe src="/" id="f" style="width:1600px;height:900px;border:0"></iframe>
+<script>
+const frame = document.getElementById('f');
+const say = (tag, value) => console.log('PROBE ' + tag + ' ' + JSON.stringify(value));
+
+frame.onload = () => {
+  const d = frame.contentDocument;
+  const w = frame.contentWindow;
+  const q = (s) => d.querySelector(s);
+  const click = (s) => { const e = q(s); if (e) e.click(); };
+  const knob = () => q('.selector-knob');
+  const sonarActive = () => {
+    const b = d.querySelector('.sonar-mode-option.active');
+    return b ? b.dataset.audioMode : 'NONE';
+  };
+  const state = (tag) => ({
+    tag,
+    knobAriaNow: knob().getAttribute('aria-valuenow'),
+    knobAriaText: knob().getAttribute('aria-valuetext'),
+    knobRotation: (knob().style.transform || '').replace('rotate(', '').replace('deg)', ''),
+    sonarPanelActive: sonarActive(),
+    gainTargets: gainTargets.slice(-2), // [tx, rx] enabled flags from the last routing update
+    pulseOscillators: taggedOsc
+  });
+
+  // --- Instrument the Web Audio graph of the iframe before it is built ---
+  let oscCount = 0;
+  let taggedOsc = 0;
+  const gainTargets = [];
+  const AC = w.AudioContext || w.webkitAudioContext;
+  if (AC) {
+    const origGain = AC.prototype.createGain;
+    const origOsc = AC.prototype.createOscillator;
+    AC.prototype.createGain = function () {
+      const node = origGain.call(this);
+      const origTarget = node.gain.setTargetAtTime.bind(node.gain);
+      node.gain.setTargetAtTime = (value, start, tc) => { gainTargets.push(value); return origTarget(value, start, tc); };
+      return node;
+    };
+    AC.prototype.createOscillator = function () { oscCount++; taggedOsc++; return origOsc.call(this); };
+    say('AUDIO_GRAPH_PATCHED', 'ok');
+  } else {
+    say('AUDIO_GRAPH_PATCHED', 'NO AudioContext in this browser');
+  }
+
+  const pressKnob = (key, times) => {
+    for (let i = 0; i < times; i++) knob().dispatchEvent(new w.KeyboardEvent('keydown', { key, bubbles: true }));
+  };
+  // Fire exactly one pulse: the MAN trigger loop fires immediately, then we stop it
+  const fireOnce = () => { taggedOsc = 0; click('.btn-pulse-fire'); };
+
+  setTimeout(() => { say('INITIAL', state('after self-test')); click('.toggle-pill[data-mode="MAN"]'); }, 2600);
+
+  setTimeout(fireOnce, 2900);                      // current knob position = TX/RX (3)
+  setTimeout(() => { say('MODE_BOTH_FIRED', state('both')); click('.btn-pulse-fire'); }, 3700);
+
+  setTimeout(() => { pressKnob('ArrowDown', 1); say('KNOB_TO_RX', state('knob down 1')); }, 4000);
+  setTimeout(fireOnce, 4300);
+  setTimeout(() => { say('MODE_RX_FIRED', state('rx only')); click('.btn-pulse-fire'); }, 5100);
+
+  setTimeout(() => { pressKnob('ArrowDown', 1); say('KNOB_TO_TX', state('knob down 1 more')); }, 5400);
+  setTimeout(fireOnce, 5700);
+  setTimeout(() => { say('MODE_TX_FIRED', state('tx only')); click('.btn-pulse-fire'); }, 6500);
+
+  setTimeout(() => { pressKnob('ArrowDown', 1); say('KNOB_TO_MUTE', state('knob down 1 more')); }, 6800);
+  setTimeout(fireOnce, 7100);
+  setTimeout(() => { say('MODE_MUTE_FIRED', state('muted')); click('.btn-pulse-fire'); }, 7900);
+
+  setTimeout(() => { pressKnob('ArrowUp', 3); say('KNOB_BACK_TO_BOTH', state('knob up 3')); }, 8200);
+
+  setTimeout(() => { click('.sonar-mode-option[data-audio-mode="RX"]'); say('PANEL_CLICK_RX', state('panel -> knob')); }, 8600);
+  setTimeout(() => { click('.sonar-mode-option[data-audio-mode="MUTE"]'); say('PANEL_CLICK_MUTE', state('panel -> knob')); }, 9000);
+  setTimeout(() => { click('.toggle-pill[data-mode="OFF"]'); say('DETECTOR_OFF', state('power off')); }, 9400);
+  setTimeout(() => { say('OSC_TOTAL_PULSE_TONES', oscCount); }, 9700);
+};
+</script>
+</body></html>
