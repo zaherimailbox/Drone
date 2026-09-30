@@ -481,13 +481,21 @@
 /* The lower deck now holds the three non-frequency controls. */
 .knobs-cluster {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4px;
+  /* Match the equal-width TX and RX meter columns directly above. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
   background: var(--bg-panel-inset);
   border: 1px solid var(--border-metal);
   padding: 4px;
   border-radius: 4px;
   align-items: center;
+}
+
+.tx-knobs-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  min-width: 0;
 }
 
 .knob-unit {
@@ -527,23 +535,24 @@
 
 .audio-selector-unit {
   min-width: 0;
+  border-left: 1px solid var(--border-metal);
+  padding-left: 4px;
 }
+
 .selector-labels {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0 0 12px 4px;
   font-size: 6px;
   color: #90a4ae;
   font-family: 'Consolas', monospace;
   font-weight: bold;
   pointer-events: none; /* Never steal drag / wheel / click input from the knob */
 }
-.selector-labels span:nth-child(1) { position: absolute; left: 0; top: 25px; transform: rotate(-45deg); }
-.selector-labels span:nth-child(2) { position: absolute; left: 0; top: 0; }
-.selector-labels span:nth-child(3) { position: absolute; right: 0; top: 0; }
-.selector-labels span:nth-child(4) { position: absolute; right: 0; top: 25px; transform: rotate(45deg); }
+.selector-labels span { position: absolute; white-space: nowrap; }
+.selector-labels span:nth-child(1) { left: 0; bottom: 0; }
+.selector-labels span:nth-child(2) { left: 2px; top: 0; }
+.selector-labels span:nth-child(3) { right: 0; top: 0; }
+.selector-labels span:nth-child(4) { right: 0; bottom: 0; }
 
 /* --- Scope-First Vertical Budget ------------------------------------------
    The oscilloscope monitor is the primary instrument of this module, so it
