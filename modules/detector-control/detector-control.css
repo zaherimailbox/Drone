@@ -443,14 +443,49 @@
   text-shadow: 0 0 4px #000;
 }
 
-/* Single-Row Potentiometer Deck: all five units share one row (no wrapping) */
-.knobs-cluster {
+/* Frequency dial and its paired frequency controls share one grouped row. */
+.frequency-control-row {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.frequency-control-row .radio-tuner-chassis {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.frequency-knobs {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 2px;
+  grid-template-columns: repeat(2, minmax(42px, 1fr));
+  gap: 4px;
+  flex: 0 0 104px;
+  padding: 3px 4px;
   background: var(--bg-panel-inset);
   border: 1px solid var(--border-metal);
-  padding: 4px 2px;
+  border-radius: 4px;
+}
+
+.frequency-knob-unit {
+  justify-content: center;
+}
+
+@media (max-width: 420px) {
+  .frequency-knobs {
+    flex-basis: 92px;
+    gap: 2px;
+    padding-inline: 2px;
+  }
+}
+
+/* The lower deck now holds the three non-frequency controls. */
+.knobs-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  background: var(--bg-panel-inset);
+  border: 1px solid var(--border-metal);
+  padding: 4px;
   border-radius: 4px;
   align-items: center;
 }
@@ -458,12 +493,12 @@
 .knob-unit {
   position: relative;
   display: flex;
-  min-width: 0; /* Keep every cell inside its own 1/5 column */
+  min-width: 0;
   flex-direction: column;
   align-items: center;
 }
 
-/* Compact labelling so five units fit one narrow row without overlap */
+/* Compact labelling keeps the controls readable in the narrow right column. */
 .knob-label {
   font-size: 7px;
   letter-spacing: -0.3px;
@@ -491,7 +526,7 @@
 }
 
 .audio-selector-unit {
-  min-width: 0; /* Let the selector share the single row with the four knobs */
+  min-width: 0;
 }
 .selector-labels {
   position: absolute;

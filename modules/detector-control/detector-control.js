@@ -78,19 +78,16 @@ export class DetectorControl {
     this.elements.txLed = document.querySelector('.meter-status-led.tx-led');
     this.elements.rxLed = document.querySelector('.meter-status-led.rx-led');
 
-    const knobs = document.querySelectorAll('.rotary-knob');
-    this.elements.knobFreq = knobs[0];
-    this.elements.knobStep = knobs[1];
-    this.elements.knobCarrierDuty = knobs[2];
-    this.elements.knobBurstDuty = knobs[3];
+    this.elements.knobFreq = document.querySelector('[data-control="frequency"]');
+    this.elements.knobStep = document.querySelector('[data-control="frequency-step"]');
+    this.elements.knobCarrierDuty = document.querySelector('[data-control="carrier-duty"]');
+    this.elements.knobBurstDuty = document.querySelector('[data-control="burst-duty"]');
+    this.elements.knobAudio = document.querySelector('[data-control="audio-mode"]');
 
-    const labels = document.querySelectorAll('.knob-label');
-    this.elements.labelFreq = labels[0];
-    this.elements.labelStep = labels[1];
-    this.elements.labelCarrierDuty = labels[2];
-    this.elements.labelBurstDuty = labels[3];
-
-    this.elements.knobAudio = knobs[4];
+    this.elements.labelFreq = document.querySelector('[data-label="frequency"]');
+    this.elements.labelStep = document.querySelector('[data-label="frequency-step"]');
+    this.elements.labelCarrierDuty = document.querySelector('[data-label="carrier-duty"]');
+    this.elements.labelBurstDuty = document.querySelector('[data-label="burst-duty"]');
     this.elements.osTimebase = document.querySelector('.os-timebase-label');
     this.elements.txCanvas = document.getElementById('oscilloscope-tx-canvas');
     this.elements.rxCanvas = document.getElementById('oscilloscope-rx-canvas');

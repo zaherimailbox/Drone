@@ -29,20 +29,36 @@
               </div>
 
               <div class="detector-apparatus">
-              <!-- Retro Linear Frequency Dial -->
-              <div class="radio-tuner-chassis">
-                <div class="tuner-glass-window" role="slider" tabindex="0" aria-label="Detector frequency" aria-valuemin="5" aria-valuemax="15" aria-valuenow="10" aria-valuetext="10.0 kHz" aria-disabled="true">
-                  
-                  <div class="tuner-scale-fine-ticks"></div>
-
-                  <div class="tuner-scale-ticks">
-                    <span>5k</span>
-                    <span>7.5k</span>
-                    <span>10k</span>
-                    <span>12.5k</span>
-                    <span>15k</span>
+              <!-- Frequency tuning controls: dial plus its paired rotary adjustments -->
+              <div class="frequency-control-row">
+                <div class="radio-tuner-chassis">
+                  <div class="tuner-glass-window" role="slider" tabindex="0" aria-label="Detector frequency" aria-valuemin="5" aria-valuemax="15" aria-valuenow="10" aria-valuetext="10.0 kHz" aria-disabled="true">
+                    <div class="tuner-scale-fine-ticks"></div>
+                    <div class="tuner-scale-ticks">
+                      <span>5k</span>
+                      <span>7.5k</span>
+                      <span>10k</span>
+                      <span>12.5k</span>
+                      <span>15k</span>
+                    </div>
+                    <div class="tuner-needle"></div>
                   </div>
-                  <div class="tuner-needle"></div>
+                </div>
+                <div class="frequency-knobs">
+                  <div class="knob-unit frequency-knob-unit">
+                    <div class="knob-scale-ring"></div>
+                    <div class="rotary-knob" data-control="frequency" role="slider" tabindex="0" aria-label="Frequency" aria-valuemin="5" aria-valuemax="15" aria-valuestep="0.1" aria-valuenow="10" aria-valuetext="10.0 kHz">
+                      <div class="rotary-knob-indicator"></div>
+                    </div>
+                    <span class="knob-label" data-label="frequency">FREQ (kHz)</span>
+                  </div>
+                  <div class="knob-unit frequency-knob-unit">
+                    <div class="knob-scale-ring"></div>
+                    <div class="rotary-knob" data-control="frequency-step" role="slider" tabindex="0" aria-label="Frequency step" aria-valuemin="0.1" aria-valuemax="2" aria-valuestep="0.1" aria-valuenow="0.5" aria-valuetext="0.5 kHz">
+                      <div class="rotary-knob-indicator"></div>
+                    </div>
+                    <span class="knob-label" data-label="frequency-step">STEP: 0.5 kHz</span>
+                  </div>
                 </div>
               </div>
 
@@ -165,36 +181,22 @@
               <div class="knobs-cluster">
                 <div class="knob-unit">
                   <div class="knob-scale-ring"></div>
-                    <div class="knob-scale-ring"></div>
-                    <div class="knob-scale-ring"></div>
-                    <div class="knob-scale-ring"></div>
-                    <div class="rotary-knob" role="slider" tabindex="0" aria-label="Frequency" aria-valuemin="5" aria-valuemax="15" aria-valuestep="0.1" aria-valuenow="10" aria-valuetext="10.0 kHz">
+                  <div class="rotary-knob" data-control="carrier-duty" role="slider" tabindex="0" aria-label="Carrier duty" aria-valuemin="10" aria-valuemax="90" aria-valuestep="1" aria-valuenow="50" aria-valuetext="50 percent">
                     <div class="rotary-knob-indicator"></div>
                   </div>
-                  <span class="knob-label">FREQ (kHz)</span>
+                  <span class="knob-label" data-label="carrier-duty">CARRIER DUTY</span>
                 </div>
                 <div class="knob-unit">
-                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Frequency step" aria-valuemin="0.1" aria-valuemax="2" aria-valuestep="0.1" aria-valuenow="0.5" aria-valuetext="0.5 kHz">
+                  <div class="knob-scale-ring"></div>
+                  <div class="rotary-knob" data-control="burst-duty" role="slider" tabindex="0" aria-label="Burst duty" aria-valuemin="40" aria-valuemax="80" aria-valuestep="1" aria-valuenow="60" aria-valuetext="60 percent">
                     <div class="rotary-knob-indicator"></div>
                   </div>
-                  <span class="knob-label">STEP: 0.5 kHz</span>
-                </div>
-                <div class="knob-unit">
-                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Carrier duty" aria-valuemin="10" aria-valuemax="90" aria-valuestep="1" aria-valuenow="50" aria-valuetext="50 percent">
-                    <div class="rotary-knob-indicator"></div>
-                  </div>
-                  <span class="knob-label">CARRIER DUTY</span>
-                </div>
-                <div class="knob-unit">
-                  <div class="rotary-knob" role="slider" tabindex="0" aria-label="Burst duty" aria-valuemin="40" aria-valuemax="80" aria-valuestep="1" aria-valuenow="60" aria-valuetext="60 percent">
-                    <div class="rotary-knob-indicator"></div>
-                  </div>
-                  <span class="knob-label">BURST DUTY</span>
+                  <span class="knob-label" data-label="burst-duty">BURST DUTY</span>
                 </div>
               
                 <div class="knob-unit audio-selector-unit">
                   <div class="knob-scale-ring selector-ticks"></div>
-                  <div class="rotary-knob selector-knob" role="slider" tabindex="0" aria-label="Audio Mode" aria-valuemin="0" aria-valuemax="3" aria-valuestep="1" aria-valuenow="3" aria-valuetext="T/R">
+                  <div class="rotary-knob selector-knob" data-control="audio-mode" role="slider" tabindex="0" aria-label="Audio Mode" aria-valuemin="0" aria-valuemax="3" aria-valuestep="1" aria-valuenow="3" aria-valuetext="T/R">
                     <div class="rotary-knob-indicator"></div>
                   </div>
                   <span class="knob-label">AUDIO OUT</span>
