@@ -179,3 +179,122 @@ body::before {
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width: 640px) {
+  html,
+  body {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .cockpit-container {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 6px;
+  }
+
+  .cockpit-top {
+    height: auto;
+  }
+
+  .topbar-strip {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .topbar-section {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .topbar-brand {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .btn-master-kill,
+  .btn-flight,
+  .toggle-pill,
+  .btn-pulse-fire,
+  .sonar-mode-option,
+  .btn-survey-action {
+    min-height: 40px;
+  }
+
+  .cockpit-main-deck {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cockpit-gap);
+    min-height: 0;
+  }
+
+  .deck-col-left,
+  .deck-col-center,
+  .deck-col-right {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .cockpit-main-deck .cockpit-module {
+    flex: 0 0 auto !important;
+    min-width: 0;
+    height: auto;
+  }
+
+  .deck-col-left > .cockpit-module:first-child {
+    min-height: 280px;
+  }
+
+  .deck-col-left > .cockpit-module:last-child {
+    min-height: 210px;
+  }
+
+  .deck-col-center > .cockpit-module:first-child {
+    height: clamp(220px, 62vw, 340px);
+  }
+
+  .deck-col-center > .cockpit-module:last-child {
+    height: 300px;
+  }
+
+  .deck-col-right > .cockpit-module:last-child {
+    height: 220px;
+  }
+
+  .vitals-grid,
+  .flight-ctl-wrapper,
+  .camera-board-container,
+  .radar-puzzle-container,
+  .detector-wrapper {
+    height: 100%;
+  }
+
+  .hud-top-telemetry {
+    flex-wrap: wrap;
+    gap: 2px 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .radar-puzzle-container {
+    flex-direction: column;
+  }
+
+  .radar-screen-wrapper,
+  .puzzle-grid-wrapper {
+    min-height: 190px;
+  }
+
+  .deck-col-center > .cockpit-module:last-child {
+    height: 410px;
+  }
+}
